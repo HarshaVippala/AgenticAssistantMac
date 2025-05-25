@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create the custom window
         overlayWindow = InvisibleOverlayWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 550, height: 450), // Further adjusted initial size
+            contentRect: NSRect(x: 0, y: 0, width: 700, height: 700), // Further adjusted initial size
             styleMask: [NSWindow.StyleMask.borderless, NSWindow.StyleMask.nonactivatingPanel, NSWindow.StyleMask.hudWindow],
             backing: NSWindow.BackingStoreType.buffered,
             defer: false

@@ -8,7 +8,7 @@ class InvisibleOverlayWindow: NSPanel {
         defer flag: Bool
     ) {
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
+            contentRect: NSRect(x: 0, y: 0, width: 800, height: 800),
             styleMask: [.borderless, .nonactivatingPanel, .hudWindow],
             backing: .buffered,
             defer: false
