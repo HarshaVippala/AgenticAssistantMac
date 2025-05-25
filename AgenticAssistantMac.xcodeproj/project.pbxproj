@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		544361372DE305D200DA57FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 544361202DE305D100DA57FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 544361272DE305D100DA57FA;
+			remoteInfo = AgenticAssistantMac;
+		};
+		544361412DE305D200DA57FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 544361202DE305D100DA57FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 544361272DE305D100DA57FA;
+			remoteInfo = AgenticAssistantMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		544361282DE305D100DA57FA /* AgenticAssistantMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgenticAssistantMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		544361362DE305D200DA57FA /* AgenticAssistantMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgenticAssistantMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		544361402DE305D200DA57FA /* AgenticAssistantMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgenticAssistantMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5443612A2DE305D100DA57FA /* AgenticAssistantMac */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AgenticAssistantMac;
+			sourceTree = "<group>";
+		};
+		544361392DE305D200DA57FA /* AgenticAssistantMacTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AgenticAssistantMacTests;
+			sourceTree = "<group>";
+		};
+		544361432DE305D200DA57FA /* AgenticAssistantMacUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AgenticAssistantMacUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		544361252DE305D100DA57FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		544361332DE305D200DA57FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5443613D2DE305D200DA57FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5443611F2DE305D100DA57FA = {
+			isa = PBXGroup;
+			children = (
+				5443612A2DE305D100DA57FA /* AgenticAssistantMac */,
+				544361392DE305D200DA57FA /* AgenticAssistantMacTests */,
+				544361432DE305D200DA57FA /* AgenticAssistantMacUITests */,
+				544361292DE305D100DA57FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		544361292DE305D100DA57FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				544361282DE305D100DA57FA /* AgenticAssistantMac.app */,
+				544361362DE305D200DA57FA /* AgenticAssistantMacTests.xctest */,
+				544361402DE305D200DA57FA /* AgenticAssistantMacUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		544361272DE305D100DA57FA /* AgenticAssistantMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5443614A2DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMac" */;
+			buildPhases = (
+				544361242DE305D100DA57FA /* Sources */,
+				544361252DE305D100DA57FA /* Frameworks */,
+				544361262DE305D100DA57FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5443612A2DE305D100DA57FA /* AgenticAssistantMac */,
+			);
+			name = AgenticAssistantMac;
+			packageProductDependencies = (
+			);
+			productName = AgenticAssistantMac;
+			productReference = 544361282DE305D100DA57FA /* AgenticAssistantMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		544361352DE305D200DA57FA /* AgenticAssistantMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5443614D2DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMacTests" */;
+			buildPhases = (
+				544361322DE305D200DA57FA /* Sources */,
+				544361332DE305D200DA57FA /* Frameworks */,
+				544361342DE305D200DA57FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				544361382DE305D200DA57FA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				544361392DE305D200DA57FA /* AgenticAssistantMacTests */,
+			);
+			name = AgenticAssistantMacTests;
+			packageProductDependencies = (
+			);
+			productName = AgenticAssistantMacTests;
+			productReference = 544361362DE305D200DA57FA /* AgenticAssistantMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5443613F2DE305D200DA57FA /* AgenticAssistantMacUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 544361502DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMacUITests" */;
+			buildPhases = (
+				5443613C2DE305D200DA57FA /* Sources */,
+				5443613D2DE305D200DA57FA /* Frameworks */,
+				5443613E2DE305D200DA57FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				544361422DE305D200DA57FA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				544361432DE305D200DA57FA /* AgenticAssistantMacUITests */,
+			);
+			name = AgenticAssistantMacUITests;
+			packageProductDependencies = (
+			);
+			productName = AgenticAssistantMacUITests;
+			productReference = 544361402DE305D200DA57FA /* AgenticAssistantMacUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		544361202DE305D100DA57FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					544361272DE305D100DA57FA = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					544361352DE305D200DA57FA = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 544361272DE305D100DA57FA;
+					};
+					5443613F2DE305D200DA57FA = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 544361272DE305D100DA57FA;
+					};
+				};
+			};
+			buildConfigurationList = 544361232DE305D100DA57FA /* Build configuration list for PBXProject "AgenticAssistantMac" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5443611F2DE305D100DA57FA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 544361292DE305D100DA57FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				544361272DE305D100DA57FA /* AgenticAssistantMac */,
+				544361352DE305D200DA57FA /* AgenticAssistantMacTests */,
+				5443613F2DE305D200DA57FA /* AgenticAssistantMacUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		544361262DE305D100DA57FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		544361342DE305D200DA57FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5443613E2DE305D200DA57FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		544361242DE305D100DA57FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		544361322DE305D200DA57FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5443613C2DE305D200DA57FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		544361382DE305D200DA57FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 544361272DE305D100DA57FA /* AgenticAssistantMac */;
+			targetProxy = 544361372DE305D200DA57FA /* PBXContainerItemProxy */;
+		};
+		544361422DE305D200DA57FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 544361272DE305D100DA57FA /* AgenticAssistantMac */;
+			targetProxy = 544361412DE305D200DA57FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		544361482DE305D200DA57FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		544361492DE305D200DA57FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		5443614B2DE305D200DA57FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AgenticAssistantMac/AgenticAssistantMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone for audio streaming to the backend";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5443614C2DE305D200DA57FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AgenticAssistantMac/AgenticAssistantMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone for audio streaming to the backend";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5443614E2DE305D200DA57FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgenticAssistantMac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AgenticAssistantMac";
+			};
+			name = Debug;
+		};
+		5443614F2DE305D200DA57FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgenticAssistantMac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AgenticAssistantMac";
+			};
+			name = Release;
+		};
+		544361512DE305D200DA57FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMacUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AgenticAssistantMac;
+			};
+			name = Debug;
+		};
+		544361522DE305D200DA57FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PZLY83K6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vippala.AgenticAssistantMacUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AgenticAssistantMac;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		544361232DE305D100DA57FA /* Build configuration list for PBXProject "AgenticAssistantMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				544361482DE305D200DA57FA /* Debug */,
+				544361492DE305D200DA57FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5443614A2DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5443614B2DE305D200DA57FA /* Debug */,
+				5443614C2DE305D200DA57FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5443614D2DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5443614E2DE305D200DA57FA /* Debug */,
+				5443614F2DE305D200DA57FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		544361502DE305D200DA57FA /* Build configuration list for PBXNativeTarget "AgenticAssistantMacUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				544361512DE305D200DA57FA /* Debug */,
+				544361522DE305D200DA57FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 544361202DE305D100DA57FA /* Project object */;
+}
