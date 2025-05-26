@@ -11,7 +11,6 @@ import os // For logging
 
 // Define a struct for the SESSION_START message payload
 // This should align with what your backend expects.
-// Based on backend types, it might look something like this:
 struct SessionStartMessage: Codable {
     let type: String = "session_start" // Matches MessageType.SESSION_START
     let timestamp: TimeInterval = Date().timeIntervalSince1970 * 1000 // Milliseconds
@@ -75,10 +74,8 @@ class AudioStreamer: NSObject, ObservableObject {
         logger.log("Attempting to start streaming...")
         
         // 1. Ensure an input device (preferably the target one) is identified.
-        //    The actual device used by AVAudioEngine will be the system default
-        //    unless more complex CoreAudio selection is implemented.
-        if self.selectedDeviceName == nil { // If no device was pre-selected (e.g. by UI)
-            selectTargetDevice() // Try to identify our target device among those enumerated
+        if self.selectedDeviceName == nil {
+            selectTargetDevice()
         }
         
         if let selectedName = self.selectedDeviceName {
@@ -86,7 +83,6 @@ class AudioStreamer: NSObject, ObservableObject {
         } else {
             logger.warning("No specific audio device was pre-selected or matched target name. AVAudioEngine will use system default input.")
         }
-
 
         // 2. Setup and start audio engine
         setupAudioEngine() 
@@ -97,14 +93,19 @@ class AudioStreamer: NSObject, ObservableObject {
         }
 
         do {
-            // 3. Install tap for audio data
-            inputNode.installTap(onBus: 0, bufferSize: 4096, format: audioFormat) { [weak self] (buffer, when) in
+            // 3. Install tap for audio data with proper format conversion
+            // Request Int16 format for the tap to match Deepgram's expectations
+            let outputFormat = AVAudioFormat(commonFormat: .pcmFormatInt16,
+                                           sampleRate: audioFormat.sampleRate,
+                                           channels: 2, // Force stereo output
+                                           interleaved: true)!
+            
+            inputNode.installTap(onBus: 0, bufferSize: 4096, format: outputFormat) { [weak self] (buffer, when) in
                 guard let self = self, self.isStreaming else { return }
                 
                 let audioData = self.convertPCMBufferToData(buffer: buffer)
                 
                 if !audioData.isEmpty {
-                    // self.logger.debug("Audio tap fired, buffer size: \(buffer.frameLength), data size: \(audioData.count)")
                     self.sendAudioData(audioData)
                 }
             }
@@ -113,7 +114,7 @@ class AudioStreamer: NSObject, ObservableObject {
             logger.info("Audio engine started successfully (using system default input).")
 
             // 4. Connect WebSocket and send SESSION_START
-            connectWebSocketAndStartSession(format: audioFormat)
+            connectWebSocketAndStartSession(format: outputFormat)
             
             DispatchQueue.main.async {
                 self.isStreaming = true
@@ -194,14 +195,13 @@ class AudioStreamer: NSObject, ObservableObject {
             if let firstDevice = self.availableInputDevices.first {
                  self.logger.warning("First available device is: \(firstDevice.name). Ensure system default is correctly set.")
                  DispatchQueue.main.async {
-                    self.selectedDeviceName = firstDevice.name // Log what might be used if target isn't there
+                    self.selectedDeviceName = firstDevice.name
                  }
             } else {
                 self.logger.error("No input devices found at all.")
             }
         }
     }
-
 
     // MARK: - AVAudioEngine Setup & Handling
 
@@ -225,36 +225,22 @@ class AudioStreamer: NSObject, ObservableObject {
         logger.info("Please ensure your aggregate device '\(self.targetDeviceName)' is set as the system default input for it to be used.")
 
         let nativeInputFormat = inputNode.outputFormat(forBus: 0)
-        self.audioFormat = nativeInputFormat // Use the native format for the tap
+        self.audioFormat = nativeInputFormat
 
         // Log details of the native format
-        logger.info("System default input node's native format (this will be used for the tap): \(nativeInputFormat.description)")
+        logger.info("System default input node's native format: \(nativeInputFormat.description)")
         logger.info("Native format details - SampleRate: \(nativeInputFormat.sampleRate), Channels: \(nativeInputFormat.channelCount), Interleaved: \(nativeInputFormat.isInterleaved), CommonFormat: \(nativeInputFormat.commonFormat.rawValue)")
-
-        // Ensure the native format is PCM, as our conversion and backend expect that.
-        // If it's not, more complex conversion would be needed, or the aggregate device config is unexpected.
-        guard nativeInputFormat.commonFormat == .pcmFormatInt16 || nativeInputFormat.commonFormat == .pcmFormatFloat32 else {
-            logger.error("Native input format is not PCM (int16 or float32) as expected. Format: \(nativeInputFormat.commonFormat.rawValue). Cannot proceed with current PCM conversion logic.")
-            self.audioEngine = nil
-            return
-        }
-        
-        // If the native format is float32, our convertPCMBufferToData needs adjustment,
-        // or we can try to request a tap format conversion to int16 if the engine supports it.
-        // For now, let's assume if it's PCM, our int16 conversion might work or highlight further issues.
-        // The backend expects 16-bit.
 
         audioEngine.prepare()
     }
     
     private func convertPCMBufferToData(buffer: AVAudioPCMBuffer) -> Data {
-        // This function assumes the buffer is int16. If native format is float32, this needs to change.
-        // For now, proceeding with int16 assumption based on commonFormat check.
-        
         let format = buffer.format
+        
+        // Since we're requesting int16 format in the tap, this should always be true
         if format.commonFormat == .pcmFormatInt16 {
             guard let channelData = buffer.int16ChannelData else {
-                logger.error("Failed to get int16ChannelData from buffer, though format is pcmFormatInt16.")
+                logger.error("Failed to get int16ChannelData from buffer.")
                 return Data()
             }
             
@@ -263,50 +249,19 @@ class AudioStreamer: NSObject, ObservableObject {
             let dataSize = frameLength * channelCount * MemoryLayout<Int16>.size
             var audioData = Data(capacity: dataSize)
 
-            if format.isInterleaved {
-                // This case is simpler if the buffer directly provides interleaved data
-                // However, int16ChannelData gives non-interleaved pointers.
-                // The loop below correctly reconstructs interleaved data from non-interleaved channelData.
-                for frame in 0..<frameLength {
-                    for channel in 0..<channelCount {
-                        let sample = channelData[channel][frame]
-                        audioData.append(contentsOf: [UInt8(sample & 0xFF), UInt8((sample >> 8) & 0xFF)]) // Little-endian
-                    }
-                }
-            } else { // Non-interleaved
-                // Data is already planar, buffer.int16ChannelData[0] is channel 0, etc.
-                // We need to interleave it for typical raw PCM streaming if backend expects that.
-                // The loop above effectively interleaves it.
-                for frame in 0..<frameLength {
-                    for channel in 0..<channelCount {
-                        let sample = channelData[channel][frame]
-                        audioData.append(contentsOf: [UInt8(sample & 0xFF), UInt8((sample >> 8) & 0xFF)])
-                    }
-                }
-            }
-            return audioData
-        } else if format.commonFormat == .pcmFormatFloat32 {
-            logger.warning("Audio format is Float32. Conversion to Int16 not yet implemented. Sending raw Float32 data.")
-            // TODO: Implement Float32 to Int16 conversion if backend strictly requires Int16.
-            // For now, trying to send float32 as raw bytes. This will likely mismatch backend expectation.
-            guard let channelData = buffer.floatChannelData else {
-                logger.error("Failed to get floatChannelData from buffer.")
-                return Data()
-            }
-            let channelCount = Int(format.channelCount)
-            let frameLength = Int(buffer.frameLength)
-            let dataSize = frameLength * channelCount * MemoryLayout<Float32>.size
-            var audioData = Data(capacity: dataSize)
-
+            // Always create interleaved data for streaming
             for frame in 0..<frameLength {
                 for channel in 0..<channelCount {
-                    var sample = channelData[channel][frame]
-                    audioData.append(withUnsafeBytes(of: &sample) { Data($0) })
+                    let sample = channelData[channel][frame]
+                    // Little-endian encoding as required by Deepgram
+                    audioData.append(UInt8(sample & 0xFF))
+                    audioData.append(UInt8((sample >> 8) & 0xFF))
                 }
             }
+            
             return audioData
         } else {
-            logger.error("Unsupported audio format for conversion: \(format.commonFormat.rawValue)")
+            logger.error("Unexpected audio format in buffer: \(format.commonFormat.rawValue)")
             return Data()
         }
     }
@@ -327,12 +282,12 @@ class AudioStreamer: NSObject, ObservableObject {
         }
         
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        webSocketTask = urlSession.webSocketTask(with: self.webSocketURL) // Explicit self
+        webSocketTask = urlSession.webSocketTask(with: self.webSocketURL)
         
         self.sessionId = UUID().uuidString 
         
         webSocketTask?.resume() 
-        logger.info("WebSocket connection initiated to \(self.webSocketURL). Session ID: \(self.sessionId ?? "N/A")") // Explicit self
+        logger.info("WebSocket connection initiated to \(self.webSocketURL). Session ID: \(self.sessionId ?? "N/A")")
         
         receiveWebSocketMessages()
     }
@@ -415,21 +370,14 @@ extension AudioStreamer: URLSessionWebSocketDelegate {
             logger.error("Cannot send SESSION_START: audio format or session ID not available at didOpen.")
             return
         }
-        // Determine bitDepth from the format
-        var bitDepth = 0
-        if audioFormat.commonFormat == .pcmFormatInt16 {
-            bitDepth = 16
-        } else if audioFormat.commonFormat == .pcmFormatFloat32 {
-            bitDepth = 32 // Float32
-        } else {
-            logger.error("Cannot determine bitDepth for SESSION_START from format: \(audioFormat.commonFormat.rawValue)")
-            // Fallback or error
-        }
 
-        let metadata = AudioStreamMetadata(format: "PCM", // Keep "PCM" generic, backend knows details from other fields
-                                           sampleRate: audioFormat.sampleRate,
-                                           channels: Int(audioFormat.channelCount),
-                                           bitDepth: bitDepth)
+        // Always send 16-bit depth since we're converting to int16
+        let metadata = AudioStreamMetadata(
+            format: "pcm", // lowercase to match Deepgram expectations
+            sampleRate: audioFormat.sampleRate,
+            channels: 2, // We're always sending stereo
+            bitDepth: 16 // Always 16-bit for Deepgram
+        )
         let config = StreamConfig(metadata: metadata)
         let sessionStartPayload = SessionStartMessage(sessionId: sessionId, config: config)
         
