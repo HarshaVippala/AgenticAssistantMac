@@ -29,9 +29,22 @@
 		544361402DE305D200DA57FA /* AgenticAssistantMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgenticAssistantMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		54972D662DE6CCC900189F20 /* Exceptions for "AgenticAssistantMac" folder in "AgenticAssistantMac" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 544361272DE305D100DA57FA /* AgenticAssistantMac */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5443612A2DE305D100DA57FA /* AgenticAssistantMac */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				54972D662DE6CCC900189F20 /* Exceptions for "AgenticAssistantMac" folder in "AgenticAssistantMac" target */,
+			);
 			path = AgenticAssistantMac;
 			sourceTree = "<group>";
 		};

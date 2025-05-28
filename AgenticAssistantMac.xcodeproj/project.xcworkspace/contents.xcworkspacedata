@@ -2,6 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:"
+      assignedFileDataType = "com.apple.xcode.project">
    </FileRef>
 </Workspace>
