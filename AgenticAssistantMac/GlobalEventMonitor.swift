@@ -4,7 +4,7 @@ import Foundation
 class GlobalEventMonitor: NSObject {
     private var eventMonitor: Any?
     private var localMonitor: Any?
-    
+
     weak var appDelegate: AppDelegate?
 
     override init() {
@@ -28,9 +28,13 @@ class GlobalEventMonitor: NSObject {
                 else if event.modifierFlags.contains([.command, .shift]) && event.keyCode == 8 {
                     self?.appDelegate?.captureScreenshot()
                 }
+                // Toggle follow-up window with Cmd+Shift+U (keyCode 32 for 'U')
+                else if event.modifierFlags.contains([.command, .shift]) && event.keyCode == 32 {
+                    NotificationCenter.default.post(name: .toggleFollowUpWindow, object: nil)
+                }
             }
         )
-        
+
         // Local escape key handling
         localMonitor = NSEvent.addLocalMonitorForEvents(
             matching: .keyDown,
@@ -39,7 +43,7 @@ class GlobalEventMonitor: NSObject {
                     self?.appDelegate?.hideOverlay()
                     return nil // Consume the event
                 }
-                
+
                 // Additional local shortcuts when overlay is active
                 if let window = self?.appDelegate?.overlayWindow, window.isKeyWindow {
                     // Cmd+C to copy response
@@ -48,7 +52,7 @@ class GlobalEventMonitor: NSObject {
                         return nil
                     }
                 }
-                
+
                 return event
             }
         )
@@ -64,7 +68,7 @@ class GlobalEventMonitor: NSObject {
             localMonitor = nil
         }
     }
-    
+
     private func copyCurrentResponse() {
         // This would copy the current response based on the active mode
         // Implementation would depend on the current view model state

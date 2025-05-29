@@ -3,8 +3,8 @@ import SwiftUI
 struct ResponseHeader: View {
     let question: String
     let mode: ResponseMode
-    let onClose: () -> Void
-    
+    let hasMultipleQA: Bool
+
     private var modeIcon: String {
         switch mode {
         case .simple:
@@ -17,28 +17,23 @@ struct ResponseHeader: View {
             return "🟥"
         }
     }
-    
+
     var body: some View {
         HStack(spacing: 12) {
             // Mode icon
             Text(modeIcon)
                 .font(.system(size: 16))
-            
-            // Question text
-            Text(question)
-                .font(.system(size: 14, weight: .semibold))
-                .lineLimit(2)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            // Close button
-            Button(action: onClose) {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 18))
-                    .foregroundColor(.secondary.opacity(0.6))
-                    .contentShape(Circle())
+
+            // Question text (only show if not multiple Q&A or if question is not empty)
+            if !hasMultipleQA && !question.isEmpty {
+                Text(question)
+                    .font(.system(size: 14, weight: .semibold))
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            } else {
+                // Just a spacer when no question is shown
+                Spacer()
             }
-            .buttonStyle(.plain)
-            .help("Close (Esc)")
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -57,7 +52,7 @@ struct ResponseHeader_Previews: PreviewProvider {
             ResponseHeader(
                 question: "How do you implement a binary search tree in Python?",
                 mode: .coding,
-                onClose: {}
+                hasMultipleQA: false
             )
             Spacer()
         }

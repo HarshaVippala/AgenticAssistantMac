@@ -13,9 +13,9 @@ class InvisibleOverlayWindow: NSPanel {
             backing: .buffered,
             defer: false
         )
-        
+
         // Core invisibility settings
-        self.sharingType = .none  // Excludes from screen capture
+        //self.sharingType = .none  // Excludes from screen capture
         self.level = .screenSaver + 1  // Above most windows
         self.collectionBehavior = [
             .canJoinAllSpaces,
@@ -24,21 +24,21 @@ class InvisibleOverlayWindow: NSPanel {
             .stationary,
             .fullScreenNone
         ]
-        
+
         // Visual settings
         self.isOpaque = false
         self.backgroundColor = .clear
         self.hasShadow = true
         self.isMovableByWindowBackground = true
-        
+
         // Hide from system
         self.isExcludedFromWindowsMenu = true
         self.hidesOnDeactivate = false
         // self.setAccessibilityElement(false) // Deprecated in macOS 13
         // self.setAccessibilityRole(.unknown) // Deprecated
-        
+
         // Disable screenshots
-        self.contentView?.wantsLayer = true
+        //self.contentView?.wantsLayer = true
         self.contentView?.layer?.contentsGravity = .center
     }
 
@@ -75,21 +75,21 @@ class InvisibleOverlayWindow: NSPanel {
 
         let currentLocation = event.locationInWindow
         var newOrigin = self.frame.origin
-        
+
         // Calculate the difference (delta) from the initial mouse down position
         let deltaX = currentLocation.x - initialLocation.x
         let deltaY = currentLocation.y - initialLocation.y
-        
+
         newOrigin.x += deltaX
         newOrigin.y += deltaY
 
         // Magnetic edge snapping (as per spec)
         let snapDistance: CGFloat = 20
         var snappedOrigin = newOrigin
-        
+
         if let screen = self.screen ?? NSScreen.main { // Use window's screen or main screen
             let screenFrame = screen.visibleFrame // Use visibleFrame to avoid menu bar/Dock
-            
+
             // Snap to left edge
             if abs(newOrigin.x - screenFrame.minX) < snapDistance {
                 snappedOrigin.x = screenFrame.minX
@@ -98,7 +98,7 @@ class InvisibleOverlayWindow: NSPanel {
             else if abs(newOrigin.x + self.frame.width - screenFrame.maxX) < snapDistance {
                 snappedOrigin.x = screenFrame.maxX - self.frame.width
             }
-            
+
             // Snap to bottom edge
             if abs(newOrigin.y - screenFrame.minY) < snapDistance {
                 snappedOrigin.y = screenFrame.minY
@@ -108,17 +108,21 @@ class InvisibleOverlayWindow: NSPanel {
                 snappedOrigin.y = screenFrame.maxY - self.frame.height
             }
         }
-        
+
         self.setFrameOrigin(snappedOrigin)
-        
+
         // Note: We are not calling super.mouseDragged(with: event) here because we are
         // fully managing the drag. If isMovableByWindowBackground was true and we wanted
         // to augment its behavior, we might call super.
     }
-    
+
     // It's good practice to reset initialLocation on mouseUp to prevent stale data.
     override func mouseUp(with event: NSEvent) {
         self.initialLocation = nil
+
+        // Save position when drag ends
+        self.savePosition()
+
         // super.mouseUp(with: event) // If any superclass behavior is needed
     }
 }
